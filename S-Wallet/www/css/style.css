@@ -1,1 +1,65 @@
 /* Empty. Add your own CSS if you like */
+
+#svg circle {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1.5s linear;
+    stroke: #00BFFF;
+    stroke-width: 2em;
+}
+
+#svg #bar {
+    stroke: #FF9F1E;
+}
+
+#cont {
+    display: block;
+    height: 200px;
+    width: 200px;
+    margin: 2em auto;
+    border-radius: 100%;
+    position: relative;
+}
+
+#cont:after {
+    position: absolute;
+    display: block;
+    height: 160px;
+    width: 160px;
+    left: 50%;
+    top: 50%;
+    /*content: attr(data-pct);*/
+    margin-top: -80px;
+    margin-left: -80px;
+    border-radius: 100%;
+    line-height: 160px;
+    font-size: 2em;
+}
+
+input {
+    color: #000;
+}
+
+.balance-indicator {
+    position: absolute;
+    top: 39%;
+    left: 25%;
+}
+
+.balance-indicator .balance {
+    border-bottom: solid 5px #CD5C5C;
+    width: 110px;
+    font-size: 30px;
+    text-align: center;
+    height: 30px;
+    color: #2196F3;
+    font-family: monospace;
+}
+
+.balance-indicator .total {
+    font-size: 30px;
+    text-align: center;
+    height: 30px;
+    margin-top: 6px;
+    color: #D50000;
+    font-family: monospace;
+}

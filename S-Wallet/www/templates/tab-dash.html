@@ -1,28 +1,30 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
+<ion-view view-title="SWallet">
+    <ion-content class="padding">
+        <div id="cont" data-pct="100">
+            <svg id="svg" width="210" height="210" viewPort="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <circle r="90" cx="105" cy="105" fill="transparent" stroke-dasharray="0" stroke-dashoffset="0"></circle>
+                <circle id="bar" r="90" cx="105" cy="105" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+            </svg>
+            <div class="balance-indicator">
+                <div class="balance">
+                    <span>500</span>
+                </div>
+                <div class="total">
+                    <span>5000</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-  </ion-content>
+        <form>
+            <div class="list">
+                <label class="item item-input">
+                    <i class="fa fa-inr placeholder-icon"></i>
+                    <input type="text" placeholder="today's expences ammount" required>
+                </label>
+                <label class="item item-input">
+                    <textarea placeholder="Short note about expences" required></textarea>
+                </label>
+            </div>
+            <input type="submit" value="Add Expence" class="button button-block button-positive">
+        </form>
+    </ion-content>
 </ion-view>
