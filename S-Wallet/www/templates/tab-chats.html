@@ -1,12 +1,21 @@
 <ion-view view-title="Expence Details">
     <ion-content>
-        <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-                <img ng-src="{{chat.face}}">
-                <h2>{{chat.name}}</h2>
-                <p>{{chat.lastText}}</p>
+        <ion-list ng-repeat="expence in allExpences | filter : calculateDayTotal">
+            <ion-item class="item item-divider item-calm item-icon-right">
+                {{expence.date}}
+                <i class="fa fa-inr placeholder-icon" style="color:#000000;float:right">&nbsp;{{expence.dayTotal}}</i>
+            </ion-item>
+            <ion-item class="item-remove-animate  item-icon-right" ng-repeat="exp in expence.expences" type="item-text-wrap" href="#/tab/chats/">
+                <h2>{{exp.title}}</h2>
+                <div class="row">
+                    <p class="col-33"> <i class="fa fa-inr placeholder-icon"></i>{{exp.ammount}}</p>
+                    <p class="col-67">{{exp.note}}</p>
+                </div>
                 <i class="icon ion-chevron-right icon-accessory"></i>
-                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                <ion-option-button class="button-royal" ng-click="update(expence.date,exp)">
+                    Update
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="remove(expence.date, exp.id)">
                     Delete
                 </ion-option-button>
             </ion-item>

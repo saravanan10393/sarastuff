@@ -1,27 +1,30 @@
 <ion-view view-title="SWallet">
     <ion-content class="padding">
-        <div id="cont" data-pct="100">
+        <div id="cont" data-pct="100" ng-click="prombtSalary()">
             <svg id="svg" width="210" height="210" viewPort="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <circle r="90" cx="105" cy="105" fill="transparent" stroke-dasharray="0" stroke-dashoffset="0"></circle>
+                <circle r="90" cx="105" cy="105" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
                 <circle id="bar" r="90" cx="105" cy="105" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
             </svg>
             <div class="balance-indicator">
                 <div class="balance">
-                    <span>500</span>
+                    <span>{{ammount.remainingAmt}}</span>
                 </div>
                 <div class="total">
-                    <span>5000</span>
+                    <span>{{ammount.budjectAmt}}</span>
                 </div>
             </div>
         </div>
-        <form>
+        <form name="expence_form" ng-submit="addNewExpence(expence)" style="margin-top:10%">
             <div class="list">
                 <label class="item item-input">
                     <i class="fa fa-inr placeholder-icon"></i>
-                    <input type="text" placeholder="today's expences ammount" required>
+                    <input type="text" numbers-only="numbersOnly" ng-model="expence.ammount" name="ammount" placeholder="Today's expences ammount" required>
                 </label>
                 <label class="item item-input">
-                    <textarea placeholder="Short note about expences" required></textarea>
+                    <input type="text" name="title" ng-model="expence.title" placeholder="Title ( eg : Dinner)" required>
+                </label>
+                <label class="item item-input">
+                    <textarea ng-model="expence.note" name="note" placeholder="Short note about expence(s)" required></textarea>
                 </label>
             </div>
             <input type="submit" value="Add Expence" class="button button-block button-positive">

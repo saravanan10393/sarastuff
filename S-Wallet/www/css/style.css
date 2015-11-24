@@ -3,19 +3,19 @@
 #svg circle {
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1.5s linear;
-    stroke: #00BFFF;
+    stroke: #FF9F1E;
     stroke-width: 2em;
 }
 
 #svg #bar {
-    stroke: #FF9F1E;
+    stroke: #00BFFF;
 }
 
 #cont {
     display: block;
     height: 200px;
     width: 200px;
-    margin: 2em auto;
+    margin: 1em auto;
     border-radius: 100%;
     position: relative;
 }
@@ -61,5 +61,4 @@ input {
     height: 30px;
     margin-top: 6px;
     color: #D50000;
-    font-family: monospace;
 }
