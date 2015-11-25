@@ -91,8 +91,12 @@ angular.module("SWallet.factories").factory("Storage", ['$cordovaSQLite', '$filt
     }
 
     storage.getAllExpences = function () {
-        var deferd = $q.defer();
-        var query = "SELECT * FROM expences";
+        var deferd = $q.defer(),
+            date = new Date(),
+            firstDay = $filter('date')(new Date(date.getFullYear(), date.getMonth(), 1), "dd/MM/yyyy"),
+            lastDay = $filter('date')(new Date(), "dd/MM/yyyy") //$filter('date')(new Date(date.getFullYear(), date.getMonth() + 1, 0), "dd/MM/yyyy");
+        console.log("first day and last day ", firstDay, lastDay);
+        var query = "SELECT * FROM expences WHERE date BETWEEN '" + firstDay + "' AND '" + lastDay + "'";
         $cordovaSQLite.execute(storage.db, query, []).then(function (res) {
             if (res.rows.length > 0) {
                 _.each(res.rows, function (data, i) {

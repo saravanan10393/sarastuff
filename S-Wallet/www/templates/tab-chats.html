@@ -5,7 +5,7 @@
                 {{expence.date}}
                 <i class="fa fa-inr placeholder-icon" style="color:#000000;float:right">&nbsp;{{expence.dayTotal}}</i>
             </ion-item>
-            <ion-item class="item-remove-animate  item-icon-right" ng-repeat="exp in expence.expences" type="item-text-wrap" href="#/tab/chats/">
+            <ion-item class="item-remove-animate  item-icon-right" ng-repeat="exp in expence.expences track by $index" type="item-text-wrap" href="#/tab/chats/">
                 <h2>{{exp.title}}</h2>
                 <div class="row">
                     <p class="col-33"> <i class="fa fa-inr placeholder-icon"></i>{{exp.ammount}}</p>
