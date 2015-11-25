@@ -33,9 +33,9 @@ angular.module('SWallet', ['ionic', 'SWallet.controllers', 'SWallet.directives',
             }
             var options = {
                 id: 1,
-                title: 'SWallet',
-                text: 'Forgot to enter today expences..?',
-                sound: null,
+                title: 'Forgot to enter today expences?',
+                text: '',
+                sound: 'www/tones/note.m4r',
                 every: 'minute',
                 autoClear: false,
                 at: new Date(new Date().getTime() + 10 * 1000)
