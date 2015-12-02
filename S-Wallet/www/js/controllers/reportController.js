@@ -147,4 +147,9 @@ angular.module('SWallet.controllers')
                 }
             });
         }
+
+        $scope.$on('$ionicView.enter', function (e) {
+            $scope.allExpences = Storage.allExpences;
+        });
+
     }])

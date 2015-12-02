@@ -1,6 +1,11 @@
 <ion-view view-title="Expence Details">
     <ion-content>
-        <ion-list ng-repeat="expence in allExpences | filter : calculateDayTotal">
+        <div ng-show="allExpences.length == 0" class="center-content" style="width:200px;text-align:center">
+            <i class="ion-happy-outline" style="font-size:40px;color:#1E90FF"></i>
+            <br>
+            <span>No more expences to view.</span>
+        </div>
+        <ion-list ng-show="allExpences.length > 0" ng-repeat="expence in allExpences | filter : calculateDayTotal">
             <ion-item class="item item-divider item-calm item-icon-right" ng-click="editDayExpences(expence.date)">
                 {{expence.date}}
                 <i class="fa fa-inr placeholder-icon" style="color:#000000;float:right">&nbsp;{{expence.dayTotal}}</i>
