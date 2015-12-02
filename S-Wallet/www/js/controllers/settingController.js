@@ -88,7 +88,7 @@ angular.module('SWallet.controllers')
         $scope.deleteMonthlyExp = function (data) {
             var temp = data.split('/');
             if (temp[0] == new Date().getMonth() + 1) {
-                $cordovaToast.showShortCenter(CONSTANTS.WARN.NO_PRE_MONTH_DATA);
+                $cordovaToast.showShortCenter(CONSTANTS.WARN.NO_PRE_MONTH_DATA_DELETE);
                 return;
             }
             var confirmPopup = $ionicPopup.confirm({

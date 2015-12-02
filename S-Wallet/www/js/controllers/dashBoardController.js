@@ -22,10 +22,10 @@ angular.module('SWallet.controllers')
         }
 
         $scope.calculateDayExpenceTotal = function () {
+            $scope.ammount.spentAmt = 0;
             if (Storage.allExpences.length == 0) {
                 $scope.ammount.remainingAmt = $scope.ammount.budjectAmt;
             } else {
-                Storage.ammount.spentAmt = 0;
                 _.each(Storage.allExpences, function (expence) {
                     expence.dayTotal = 0;
                     _.each(expence.expences, function (c_exp) {
@@ -54,8 +54,8 @@ angular.module('SWallet.controllers')
             expence.time = $filter('date')(new Date(), 'h:mm a');
             Storage.addExpence(_.clone(expence)).then(function () {
                 $cordovaToast.showShortCenter(CONSTANTS.SUCCESS.EXP_ADDED);
-                Storage.ammount.spentAmt += expence.ammount;
-                Storage.ammount.remainingAmt = Storage.ammount.budjectAmt - Storage.ammount.spentAmt;
+                Storage.ammount.spentAmt = parseInt(Storage.ammount.spentAmt) + expence.ammount;
+                Storage.ammount.remainingAmt = parseInt(Storage.ammount.budjectAmt) - parseInt(Storage.ammount.spentAmt)
                 updateCircularBar();
                 $scope.expence = {};
             }, function () {

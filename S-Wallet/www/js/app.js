@@ -50,7 +50,8 @@ angular.module('SWallet', ['ionic', 'SWallet.controllers', 'SWallet.directives',
         EXP_AMT_EXCEED_REMAIN_AMT: "Expence can't exceed remaining amount",
         BJT_AMT_CANT_EMPTY: "Budject ammount can't empty",
         EXP_AMT_CANT_EMPTY: "Expence ammount can't empty",
-        NO_PRE_MONTH_DATA: "No more old expence to view",
+        NO_PRE_MONTH_DATA_VIEW: "No more old expence to view",
+        NO_PRE_MONTH_DATA_DELETE: "No more old expence to delete",
         BJT_AMT_CANT_LESS_THAN_SPENT_AMT: "Budject amount can't less than spent amount"
     },
     ERROR: {
