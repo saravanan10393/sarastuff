@@ -9,13 +9,13 @@ angular.module('SWallet.controllers')
         };
 
         var i = 0,
-            oJson = {},
             sKey;
         for (; sKey = window.localStorage.key(i); i++) {
-            $scope.settings.expMonths.push({
-                month: sKey,
-                budject: window.localStorage.getItem(sKey)
-            })
+            if (sKey.indexOf('/') != -1)
+                $scope.settings.expMonths.push({
+                    month: sKey,
+                    budject: window.localStorage.getItem(sKey)
+                })
         }
 
         $scope.updateBudject = function () {

@@ -6,10 +6,12 @@
             <span>No more expences to view.</span>
         </div>
         <ion-list ng-show="allExpences.length > 0" ng-repeat="expence in allExpences | filter : calculateDayTotal">
-            <ion-item class="item item-divider item-calm item-icon-right" ng-click="editDayExpences(expence.date)">
-                {{expence.date}}
-                <i class="fa fa-inr placeholder-icon" style="color:#000000;float:right">&nbsp;{{expence.dayTotal}}</i>
-                <!-- <i class="ion-android-more-vertical" style="float:right" ng-click="editDayExpences()"> -->
+            <ion-item class="item item-divider item-calm">
+                <div class="row">
+                    <span class="col">{{expence.date}}</span>
+                    <span style="margin:auto"><i class="fa fa-inr placeholder-icon" style="color:#000000;">&nbsp;{{expence.dayTotal}}</i></span>
+                    <span style="width:20px;margin:auto;text-align:center" ng-click="editDayExpences(expence.date);$event.stopPropagation()"><i class="ion-android-more-vertical" style="font-size:30px" ng-click="editDayExpences()"></i></span>
+                </div>
             </ion-item>
             <ion-item class="item-remove-animate  item-icon-right" ng-repeat="exp in expence.expences track by $index" type="item-text-wrap">
                 <h2>{{exp.title}}</h2>
@@ -17,7 +19,7 @@
                     <p class="col-33"> <i class="fa fa-inr placeholder-icon"></i>{{exp.ammount}}</p>
                     <p class="col-67">{{exp.note}}</p>
                 </div>
-                <i class="icon ion-chevron-right icon-accessory"></i>
+                <i class="icon ion-chevron-left icon-accessory"></i>
                 <ion-option-button class="button-royal" ng-click="update(expence.date,exp)" ng-hide="readOnlyMode">
                     Update
                 </ion-option-button>

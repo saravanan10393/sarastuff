@@ -38,7 +38,7 @@ angular.module('SWallet', ['ionic', 'SWallet.controllers', 'SWallet.directives',
                 sound: 'file://note.m4r',
                 every: 'daily',
                 autoClear: false,
-                at: new Date(new Date().getTime() + 10 * 1000)
+                at: new Date().setHours(17)
             }
             cordova.plugins.notification.local.schedule(options);
             $cordovaVibration.vibrate(200);
