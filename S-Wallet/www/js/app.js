@@ -1,6 +1,6 @@
 angular.module('SWallet', ['ionic', 'SWallet.controllers', 'SWallet.directives', 'SWallet.factories', 'SWallet.filters', 'ngCordova'])
 
-.run(function ($ionicPlatform, $cordovaSQLite, Storage) {
+.run(function ($ionicPlatform, $cordovaSQLite, Storage, $cordovaVibration) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -35,12 +35,13 @@ angular.module('SWallet', ['ionic', 'SWallet.controllers', 'SWallet.directives',
                 id: 1,
                 title: 'Forgot to enter today expences?',
                 text: '',
-                sound: 'www/tones/note.m4r',
-                every: 'minute',
+                sound: 'file://note.m4r',
+                every: 'daily',
                 autoClear: false,
                 at: new Date(new Date().getTime() + 10 * 1000)
             }
             cordova.plugins.notification.local.schedule(options);
+            $cordovaVibration.vibrate(200);
         });
 
     });
@@ -48,13 +49,17 @@ angular.module('SWallet', ['ionic', 'SWallet.controllers', 'SWallet.directives',
     WARN: {
         EXP_AMT_EXCEED_REMAIN_AMT: "Expence can't exceed remaining amount",
         BJT_AMT_CANT_EMPTY: "Budject ammount can't empty",
-        EXP_AMT_CANT_EMPTY: "Expence ammount can't empty"
+        EXP_AMT_CANT_EMPTY: "Expence ammount can't empty",
+        NO_PRE_MONTH_DATA: "No more old expence to view",
+        BJT_AMT_CANT_LESS_THAN_SPENT_AMT: "Budject amount can't less than spent amount"
     },
     ERROR: {
         FAILED_TO_ADD_EXPENCE: "Failed to add expence",
     },
     SUCCESS: {
-        EXP_ADDED: "Expence added successfully"
+        EXP_ADDED: "Expence added successfully",
+        BJT_UPDATED: "Budject updated successfully",
+        MON_EXP_DELETED_SUCCESSFULLY: "Expence is deleted successfully"
     }
 });
 

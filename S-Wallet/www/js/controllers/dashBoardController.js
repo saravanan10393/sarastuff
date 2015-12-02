@@ -4,6 +4,7 @@ angular.module('SWallet.controllers')
       Storage.deleteAllExpence();
   }, 2000)*/
         $scope.ammount = Storage.ammount;
+        $scope.readOnlyMode = Storage.readOnlyMode;
         $scope.expence = {};
         //update progress at firttime load;
         $timeout(function () {
@@ -107,6 +108,7 @@ angular.module('SWallet.controllers')
         if (!Storage.ammount.budjectAmt) $scope.prombtSalary();
 
         $scope.$on('$ionicView.enter', function (e) {
+            $scope.readOnlyMode = Storage.readOnlyMode;
             $scope.calculateDayExpenceTotal();
         });
 }])

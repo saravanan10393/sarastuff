@@ -6,7 +6,9 @@ angular.module("SWallet.factories").factory("Storage", ['$cordovaSQLite', '$filt
             budjectAmt: 0,
             remainingAmt: 0,
             spentAmt: 0
-        }
+        },
+        readOnlyMode: false,
+        currentViewMonth: $filter('date')(new Date(), 'MM/yyyy')
     };
 
     if (localStorage.getItem($filter('date')(new Date(), 'MM/yyyy')) && localStorage.getItem($filter('date')(new Date(), 'MM/yyyy')).length > 0) {
@@ -90,15 +92,49 @@ angular.module("SWallet.factories").factory("Storage", ['$cordovaSQLite', '$filt
         });
     }
 
-    storage.getAllExpences = function () {
+    storage.deleteAllDayExpence = function (expDate) {
+        var query = "DELETE FROM expences WHERE date = '" + expDate + "'";
+        storage.allExpences.splice(_.findIndex(storage.allExpences, {
+            date: expDate
+        }), 1);
+        $cordovaSQLite.execute(storage.db, query).then(function (res) {
+            console.log("update ID -> " + res);
+        }, function (err) {
+            console.error(err);
+        });
+    }
+
+    storage.deleteMonthlyExpence = function (month, year) {
         var deferd = $q.defer(),
             date = new Date(),
-            firstDay = $filter('date')(new Date(date.getFullYear(), date.getMonth(), 1), "dd/MM/yyyy"),
-            lastDay = $filter('date')(new Date(), "dd/MM/yyyy") //$filter('date')(new Date(date.getFullYear(), date.getMonth() + 1, 0), "dd/MM/yyyy");
+            fromYear = year || date.getFullYear(),
+            fromMonth = month || date.getMonth(),
+            firstDay = $filter('date')(new Date(fromYear, fromMonth, 1), "dd/MM/yyyy"),
+            lastDay = $filter('date')(new Date(fromYear, fromMonth + 1, 0), "dd/MM/yyyy");
+        console.log("first day and last day ", firstDay, lastDay);
+        var query = "DELETE FROM expences WHERE date BETWEEN '" + firstDay + "' AND '" + lastDay + "'";
+        $cordovaSQLite.execute(storage.db, query, []).then(function (res) {
+            storage.getAllExpences();
+            deferd.resolve();
+        }, function (err) {
+            deferd.reject();
+            console.error('deleteMonthlyExpence error ', err);
+        });
+        return deferd.promise;
+    }
+
+    storage.getAllExpences = function (month, year) {
+        var deferd = $q.defer(),
+            date = new Date(),
+            fromYear = year || date.getFullYear(),
+            fromMonth = month || date.getMonth(),
+            firstDay = $filter('date')(new Date(fromYear, fromMonth, 1), "dd/MM/yyyy"),
+            lastDay = $filter('date')(new Date(fromYear, fromMonth + 1, 0), "dd/MM/yyyy");
         console.log("first day and last day ", firstDay, lastDay);
         var query = "SELECT * FROM expences WHERE date BETWEEN '" + firstDay + "' AND '" + lastDay + "'";
         $cordovaSQLite.execute(storage.db, query, []).then(function (res) {
             if (res.rows.length > 0) {
+                storage.allExpences.length = 0;
                 _.each(res.rows, function (data, i) {
                     storage.allExpences.push({
                         date: res.rows.item(i).date,

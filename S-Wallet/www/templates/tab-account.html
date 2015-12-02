@@ -1,26 +1,28 @@
 <ion-view view-title="Settings">
     <ion-content>
         <ion-list>
-            <ion-item ng-click="updateBuject()">
+            <ion-item ng-click="updateBudject()">
                 Update Budjet
             </ion-item>
+
             <ion-item class="item-button-right">
                 View expences
-                <select class="item-note" ng-change="changeExpenceView()" ng-model="settings.viewExp" ng-options="option.month for option in settings.expMonths track by $index">
+                <select class="item-note" ng-change="changeExpenceView(option)" ng-model="settings.viewExp" ng-options="option.month for option in settings.expMonths track by $index">
                 </select>
-                <button class="button button-positive item-note"><i class="ion-eye"></i></button>
+                <button class="button button-positive item-note" ng-click="viewOtherExp(settings.viewExp)"><i class="ion-eye"></i></button>
             </ion-item>
-            <ion-item class="item-button-right">
-                Download expences
-                <select class="item-note" ng-change="changeDownloadExpence()" ng-model="settings.downloadExp" ng-options="option.month for option in settings.expMonths track by $index">
-                </select>
-                <button class="button button-positive item-note"><i class="ion-ios-download-outline"></i></button>
-            </ion-item>
+            <!--<ion-item class="item-button-right">
+    Download expences
+    <select class="item-note" ng-change="changeDownloadExpence()" ng-model="settings.downloadExp" ng-options="option.month for option in settings.expMonths track by $index">
+    </select>
+    <button class="button button-positive item-note"><i class="ion-ios-download-outline" ng-click="downloadExpPdf()"></i></button>
+</ion-item>
+-->
             <ion-item class="item-button-right">
                 Delete expences
-                <button class="button button-positive item-note"><i class="ion-trash-a"></i></button>
-                <select class="item-note" ng-change="changeDownloadExpence()" ng-model="settings.deleteExp" ng-options="option.month for option in settings.expMonths track by $index">
+                <select class="item-note" ng-model="settings.deleteExp" ng-options="option.month for option in settings.expMonths track by $index">
                 </select>
+                <button class="button button-positive item-note" ng-click="deleteMonthlyExp(settings.deleteExp)"><i class="ion-trash-a"></i></button>
             </ion-item>
         </ion-list>
     </ion-content>

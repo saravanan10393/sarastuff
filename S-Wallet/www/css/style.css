@@ -6,11 +6,9 @@
     stroke: #FF9F1E;
     stroke-width: 2em;
 }
-
 #svg #bar {
     stroke: #00BFFF;
 }
-
 #cont {
     display: block;
     height: 200px;
@@ -19,7 +17,6 @@
     border-radius: 100%;
     position: relative;
 }
-
 #cont:after {
     position: absolute;
     display: block;
@@ -34,17 +31,14 @@
     line-height: 160px;
     font-size: 2em;
 }
-
 input {
     color: #000;
 }
-
 .balance-indicator {
     position: absolute;
     top: 39%;
     left: 25%;
 }
-
 .balance-indicator .balance {
     border-bottom: solid 5px #CD5C5C;
     width: 110px;
@@ -54,11 +48,24 @@ input {
     color: #2196F3;
     font-family: monospace;
 }
-
 .balance-indicator .total {
     font-size: 30px;
     text-align: center;
     height: 30px;
     margin-top: 6px;
     color: #D50000;
+}
+.center-content {
+    margin-top: 50%;
+    margin-left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+}
+.read-only-overlay {
+    position: absolute;
+    z-index: 5;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
 }
