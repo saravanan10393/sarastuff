@@ -1,0 +1,8 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/saravanan/git/sarastuff/S-Wallet/gulpfile.js",
+        "/home/saravanan/git/sarastuff/S-Wallet/www/lib/ionic/js/ionic.min.js",
+        "/home/saravanan/git/sarastuff/S-Wallet/www/js/services.js",
+        "/home/saravanan/git/sarastuff/S-Wallet/plugins/cordova-sqlite-storage/Lawnchair-adapter/Lawnchair-sqlitePlugin.js"
+    ]
+}
