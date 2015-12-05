@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var sendGrid = require('../libs/sendGrid/sendMail');
+var path = require('path');
 
 
 /* GET users listing. */
@@ -13,5 +14,9 @@ router.post('/', function(req, res) {
         })
     }
 });
+
+router.get('/downloadResume',function(req,res){
+    res.sendFile(path.join(__dirname, '../libs', 'pdf-sample.pdf'));
+})
 
 module.exports = router;
