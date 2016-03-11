@@ -25,13 +25,16 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.all('*',function(req,res,next){
-   res.header('Access-Control-Allow-Origin','*'); 
-   res.header('Access-Control-Allow-Methods','*'); 
-   next();
+app.all('*', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+    next();
 });
 app.use('/', routes);
 app.use('/mail', mail);
+app.get('/chat', function (req, res) {
+    res.sendFile(path.join(__dirname, 'public/modules/liveChat/chat.html'));
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

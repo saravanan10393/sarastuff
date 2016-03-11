@@ -1,0 +1,9 @@
+.liveChat {
+    position: fixed;
+    z-index: 20;
+    bottom: 0px;
+    right: 0px;
+    width: 10%;
+    height: 100px;
+    background: #aaa;
+}
